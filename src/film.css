@@ -1,0 +1,18 @@
+.image {
+  height: 512px;
+  width: 420px;
+  background-color: aqua;
+  margin-left: 12px;
+  margin-top: 10px;
+}
+.filminfoblock {
+  background-color: grey;
+  display: block;
+}
+.header-film {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 12px;
+  font-style: italic;
+  font-size: 30px;
+}
