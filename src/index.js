@@ -16,6 +16,14 @@ Http.onloadend = e => {
   filmlisrender("app", page);
 };
 
+let field = document.createElement("input");
+field.type = "text";
+let button = document.createElement("button");
+button.innerHTML = "Search";
+//button.onclick=search(); так і не зміг зрозуміти чому воно серчить до кліку по кнопці :(
+document.getElementById("app").appendChild(field);
+document.getElementById("app").appendChild(button);
+
 function filmlisrender(divId, data) {
   let ul = document.createElement("ul");
   document.getElementById(divId).appendChild(ul);
@@ -75,4 +83,16 @@ function getRecomendations(apikey, id) {
   };
 }
 
-///По рекомендашкам теж можна по тикати
+///По рекомендаціям теж можна переходити
+
+function search(query) {
+  let url = `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&page=1&include_adult=false&query=${query}`;
+  Http.open("GET", url);
+  Http.send();
+
+  Http.onloadend = e => {
+    obj = JSON.parse(Http.responseText);
+    page = obj.results;
+    filmlisrender("app", page);
+  };
+}
